@@ -144,7 +144,7 @@ if(data!=null) {
 	}
 
 	@GetMapping("/deleteEmployee/{empId}")
-	@ResponseBody
+	
 	public String deleteEmployee(@PathVariable("empId") int empId,Model model,RedirectAttributes res ) {
 	System.out.println(empId);
 	
@@ -154,7 +154,7 @@ if(data!=null) {
 		model.addAttribute("sucess", "Employee record has been deleted successfully");
 		msgs="Employee record has been deleted successfully";
 	msg1=true;
-		return "redirect:/api/employees";
+		return  "redirect:/api/employees";
 	}
 	else {
 		msg1=false;
