@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="ISO-8859-1">
+<title>Employment History Portal</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+<style type="text/css">
+.searchData{
+
+border:1px solid !important;
+height:-80px;
+
+}
+.buttondata{
+margin-right: 1000px;
+
+
+}
+</style>
+
+</head>
+
+<body>
+	<div class="container" align="center">
+
+		<h1 style="background-color:#80bfff; height:50px;">Employment
+		 History</h1>
+		
+		
+		
+		
+		
+		 <div>
+		<strong>Employment History List (<span th:text="${employeeHistoryList.size}" class="text-danger" ></span>)
+									Records
+							</strong>
+		</div>
+		
+		<table class ="table table-striped table-bordered" border="1">
+			<thead class ="table-dark">
+				<tr>
+					<th>Organization</th>
+					<th>Period</th>
+					<th>Location</th>
+					<th>Post</th>
+					
+				</tr>
+
+			</thead>
+			<tbody>
+				<tr th:each="employee : ${employeeHistoryList}">
+				
+												<td th:text="${employee.organization_name}">
+													
+													</td>
+					<td> <span th:text="${employee.from_date}+' ~'"> </span><span th:text="${employee.until_date}"></span>  </td>
+					
+					<td th:text="${employee.location}">firstName</td>
+					<td> <span th:text="${employee.post}"></span>  </td>
+						
+			</tbody>
+
+		</table>
+		<a th:href="@{/api/employees}" class ="btn btn-primary btn-sm mb-3" >Back to List</a>
+		 </div>
+
+</body>
+</html>

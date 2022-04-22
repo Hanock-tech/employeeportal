@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Employee Management System</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+<div class="container"align="center">
+<h5 style="background-color:#80bfff; "> Add/Update Employee Record</h5>
+<div class ="row">
+<div class="col-lg-14 col-md-14 col-sm-14 container justify-content-center card">
+<div class ="card-body">
+<form th:action="@{/api/employee/new}" method="post"  th:object ="${employee}">
+
+<div class="form-group">
+
+
+
+<ul style="list-style:none;"class="nobull">
+<li>
+<label for="emp_id" style="width: 7%;" >Emp No # <span class="text-danger">*</span>
+</label>
+<input readonly type="text" required min="1" max="5" th:field="*{emp_id}" placeholder="enter Emp No"/>
+<p th:if="${#fields.hasErrors('emp_id')}" class="help-block"  th:errors= "*{emp_id}"></p>
+<label for="office_mail" style="width: 15%;" >Email(Personal)</label><span class="text-danger">*</span>
+
+<input type="text" required min="2" max="25"  th:field= "*{office_mail}" placeholder="enter office email"/>
+</li>
+
+
+<li>
+<div class="form-group">
+<label for="first_name" style="width: 15%;" >Firstname </label> <span class="text-danger">*</span>
+
+<input type="text" th:field="*{first_name}"  placeholder="enter first name"/>
+<p th:if="${#fields.hasErrors('first_name')}"  th:errors= "*{first_name}"></p>
+<label  for="first_name" style="width: 15%;" >Lastname</label><span class="text-danger">*</span>
+
+<input type="text"  th:field="*{last_name}"  placeholder="enter last name"/>
+</div>
+</li>
+
+<li>
+<label for="dob" style="width: 15%;" >Date of birth</label><span class="text-danger">*</span>
+
+<input type="date"  required min="1" max="4" th:field="*{dob}" placeholder="pick date"/>
+<label for="gender" style="width: 15%;" >Gender</label><span class="text-danger">*</span>
+
+<select required  th:field="*{gender}"  style="width: 18%;  ">
+		<option value="0"  selected>Select</option>
+								<option th:value="m">Male</option>
+							
+								<option th:value="f">Female</option>
+					</select>  
+</li>
+<li>
+<label for="mobile_num" style="width: 15%;" >Mobile num</label><span class="text-danger">*</span>
+
+<input required   type="number" th:field= "*{mobile_num}" placeholder="enter mobile NO"/>
+<label for="email_id" style="width: 15%;" >Email(Personal)</label><span class="text-danger">*</span>
+
+<input pattern="[XA-Za-z]{3}" type="text" th:field= "*{email_id}" placeholder="enter Emp NO"/>
+</li>
+<li>
+<label for="doj" style="width: 15%;" >Joining date <span class="text-danger">* </span></label>
+
+<input  type="date" th:field= "*{doj}"  placeholder="pick "/>
+<label  for="emp_level"  style="width: 15%;" >Employee level</label><span class="text-danger">*</span>
+
+
+<select  th:field= "*{emp_level}" style="width: 18%;">
+		<option value="0" selected>Select</option>
+								<option th:value="07">07</option>
+								<option th:value="08">08</option>
+								<option th:value="09">09</option>
+											<option th:value="10">10</option>
+					</select>  
+</li>
+<li>
+<label  for="post_name" style="width: 15%;" >Post</label><span class="text-danger">*</span>
+
+<input required min="5" max="20" type="text" th:field= "*{post_name}"  placeholder="enter post"/>
+<label style="width: 15%;" >Blood group</label><span class="text-danger">*</span>
+
+<select  th:field= "*{blood_group}" style="width: 18%;">
+		<option value="0" selected>Select</option>
+								<option th:value="O">O+</option>
+								<option th:value="A">A+</option>
+								<option th:value="B">B+</option>
+					</select> 
+</li>
+<li>
+<label  for="basic_pay"  style="width: 15%;" >basic pay</label><span class="text-danger">*</span>
+
+<input pattern="[0-9]" maxlength="10"  th:field="*{basic_pay}"  type="number"  placeholder="enter Emp NO"/>
+<label for="house_allowance" style="width: 15%;" >House allowance</label><span class="text-danger">*</span>
+
+<input required min="1" maxlength="10"   th:field= "*{house_allowance}"  type="text" placeholder="enter house allowance "/>
+</li>
+<li>
+<label for="basic_pay" style="width: 15%;" >Pan card no</label>
+<input  th:field="*{basic_pay}" type="text" placeholder="enter pan NO"/>
+<label for="basic_pay" style="width: 15%;" >aadhaar card no</label>
+<input  th:field="*{aadhaar_num}" type="text" placeholder="enter aadhaar NO"/>
+</li>
+<li>
+<label for="permanent_address" style="width: 15%;" >Permanent address</label>
+<input   th:field="*{permanent_address}" type="text" placeholder="enter Emp NO"/>
+<label  for="present_address" style="width: 15%; height: 20%"  >Present address</label>
+<input   th:field="*{present_address}" style ="height: 60px"  type="text" placeholder="enter Emp NO"/>
+</li>
+<li>
+<input type="submit" value="update">
+		
+		<a th:href="@{/api/employees}" class ="btn btn-primary btn-sm mb-3" >Cancel</a>
+	
+		</li>
+</ul>
+
+</div>
+</form>
+</div>
+</div>
+</div>
+
+
+</div>
+</body>
+</html>

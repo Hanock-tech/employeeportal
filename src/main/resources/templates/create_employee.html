@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Employee Management System</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+<div class="container"align="center">
+<h5 style="background-color:#80bfff; "> Add/Update Employee Record</h5>
+<div class ="row">
+<div class="col-lg-14 col-md-14 col-sm-14 container justify-content-center card">
+<div class ="card-body">
+<h4 class="text-danger" role="alert" th:if="${error}" th:text="${error}"></h4>
+<form action ="#" th:action="@{/api/employee/new}" method="post"  th:object ="${employee}">
+
+<div class="form-group">
+
+
+
+<ul style="list-style:none;"class="nobull">
+
+<li>
+<div style="margin-left:10%">
+<label for="emp_id" style="width: 32%; margin-left:-100%" >Emp No <span class="text-danger">*</span>
+
+</label>
+
+<input  type="number" th:field="*{emp_id}" placeholder="enter Emp No"/>
+</div>
+<div class="text-danger" th:errors= "*{emp_id}"></div>
+<div style="margin-left:33%; margin-top:-3%">
+<label for="office_mail" style="width: 38%;" >Office Email <span class="text-danger">*</span></label>
+
+<input type="text" th:field= "*{office_mail}" placeholder="enter  mail"/>
+<div class="text-danger"   th:errors= "*{office_mail}">Email
+</div> 
+</div>
+
+</li>
+<li>
+<div style="margin-left:-80%">
+<label  for="first_name" th:field="*{first_name}"style="width: 16%; " >First Name  <span class="text-danger">*</span> </label>
+
+<input  type="text" th:field="*{first_name}"  placeholder="enter first name"/>
+<div  class="text-danger"   th:if="${#fields.hasErrors('first_name')}"   th:errors= "*{first_name}"></div>
+</div>
+<div style="margin-left:36%; margin-top:-3%">
+<label  for="first_name" style="width: 38%;" >Last Name <span class="text-danger">*</span></label>
+
+<input  type="text"  th:field="*{last_name}"  placeholder="enter last name"/>
+<div  class="text-danger"   th:if="${#fields.hasErrors('last_name')}"   th:errors= "*{last_name}"></div>
+</div>
+</li>
+<li>
+<div style="margin-left:-79%">
+<label for="dob" style="width: 15%;" >Date of birth <span class="text-danger">*</span></label>
+
+<input type="date"  th:field="*{dob}" placeholder="pick date"/>
+<div  class="text-danger"   th:if="${#fields.hasErrors('dob')}"   th:errors= "*{dob}"></div>
+</div>
+<div style="margin-left:35%; margin-top:-3%">
+<label for="gender" style="width: 38%;" >Gender <span class="text-danger">*</span></label>
+
+<select  th:field="*{gender}"  style="width: 26%;  ">
+		<option value=""  selected>Select</option>
+								<option th:value="m">Male</option>
+							
+								<option th:value="f">Female</option>
+					</select>  
+<div  class="text-danger"   th:if="${#fields.hasErrors('gender')}"   th:errors= "*{gender}"></div>
+</div>
+</li>
+
+<li>
+<div style="margin-left:-79%">
+<label for="mobile_num" style="width: 15%;" >Mobile num<span class="text-danger">*</span></label>
+
+<input type="number" th:field= "*{mobile_num}" placeholder="enter Mobile NO"/>
+
+<div  class="text-danger"   th:if="${#fields.hasErrors('mobile_num')}"   th:errors= "*{mobile_num}"></div>
+</div>
+<div style="margin-left:35%; margin-top:-3%">
+<label  for="email_id" style="width:38%;" >Email(Personal)</label>
+
+<input  type="text" th:field= "*{email_id}" placeholder="enter email"/>
+<span  class="text-danger"   th:if="${#fields.hasErrors('email_id')}"   th:errors= "*{email_id}"></span>
+</div>
+</li>
+<li>
+<div style="margin-left:-79%">
+<label for="doj" style="width: 15%;" >Joining date <span class="text-danger">* </span></label>
+
+<input  type="date" th:field= "*{doj}"  placeholder="pick bod"/>
+<div  class="text-danger"   th:if="${#fields.hasErrors('doj')}"   th:errors= "*{doj}"></div>
+</div>
+<div style="margin-left:34%; margin-top:-3%">
+<label  for="emp_level"  style="width: 38%;" >Employee level <span class="text-danger">*</span></label>
+
+
+<select  th:field= "*{emp_level}" style="width: 26%;">
+		<option value="" selected>Select</option>
+								<option th:value="07">07</option>
+								<option th:value="08">08</option>
+								<option th:value="09">09</option>
+											<option th:value="10">10</option>
+					</select>  
+					<div  class="text-danger"   th:if="${#fields.hasErrors('emp_level')}"   th:errors= "*{emp_level}"></div>
+					</div>
+					
+</li>
+<li>
+<div style="margin-left:-79%">
+<label  for="post_name" style="width: 15%;" >Post <span class="text-danger">*</span></label>
+
+<input   type="text" th:field= "*{post_name}"  placeholder="enter post"/>
+</div>
+<div style="margin-left:34%; margin-top:-3%">
+<label style="width: 38%;" >Blood group <span class="text-danger">*</span></label>
+
+<select  th:field= "*{blood_group}" style="width: 26%;">
+		<option value="0" selected>Select</option>
+								<option th:value="O">O+</option>
+								<option th:value="A">A+</option>
+								<option th:value="B">B+</option>
+					</select> 
+					</div>
+</li>
+<li>
+<div style="margin-left:-79%">
+<label  for="basic_pay"  style="width: 15%;" >Basic pay <span class="text-danger">*</span></label>
+
+<input  type="text"  th:field="*{basic_pay}"   placeholder="enter basic pay"/>
+</div>
+<div style="margin-left:34%; margin-top:-3%">
+<label for="house_allowance" style="width: 38%;" >House allowance <span class="text-danger">*</span></label>
+
+<input   th:field= "*{house_allowance}"  type="text" placeholder="enter house allowance "/>
+</div>
+</li>
+<li>
+<div style="margin-left:-79%">
+<label for="basic_pay" style="width: 15%;" >Pan card no</label>
+<input  th:field="*{pan_num}" type="text" placeholder="enter pan"/>
+</div>
+<div style="margin-left:34%; margin-top:-3%">
+<label for="basic_pay" style="width: 38%;" >aadhaar card no</label>
+<input  th:field="*{basic_pay}" type="text" placeholder="enter basic pay"/>
+</div>
+</li>
+<li>
+<div style="margin-left:-79%">
+<label for="permanent_address" style="width: 15%;"  >Permanent address</label>
+<input   th:field="*{permanent_address}"  style ="height: 60px" type="text" placeholder="enter permanent Address"/>
+</div>
+<div style="margin-left:34%; margin-top:-5%">
+<label  for="present_address" style="width: 38%; "  >Present address</label>
+<input   th:field="*{present_address}" style ="height: 60px"  type="text" placeholder="enter present Address"/>
+</div>
+</li>
+<li>
+<div style="margin-top:35px">
+<input   type="submit" value="Submit">
+	</div>	
+	<div style="margin-left:130px;margin-top:-30px">
+		<a th:href="@{/api/employees}" class ="btn btn-primary btn-sm mb-3" >Cancel</a>
+	</div>
+		</li>
+</ul>
+
+</div>
+</form>
+</div>
+</div>
+</div>
+
+
+</div>
+</body>
+</html>

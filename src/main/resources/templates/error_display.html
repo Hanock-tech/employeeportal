@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="ISO-8859-1">
+<title>Employee Management Portal</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<style type="text/css">
+.searchData{
+
+border:1px solid !important;
+height:-80px;
+
+}
+.buttondata{
+margin-right: 1000px;
+
+
+}
+.home{
+margin-right: 1000px;
+margin-left: 120px;
+margin-top:-45px;
+border:40px;
+}
+</style>
+
+</head>
+
+<body>
+	<div class="container" align="center">
+<div class="searchData">
+		<h1 style="background-color:#80bfff; height:50px;">Employee Search List Screen</h1>
+		<form th:action="@{/api/searchEmployee}" method="get">
+
+		
+<div class="form-group">
+		
+		<label>Emp No :</label>
+		<input type="number" name="empId" th:value="${empId}">   
+		<label>Emp Name :</label>
+		<input type="text" name="empName" th:value="${empName}">  
+		
+		<label>Gender :</label>
+		<select name="gender" th:value="${gender}">
+		<option value="" selected>Select</option>
+								<option value="m">Male</option>
+							
+								<option value="f">Female</option>
+					</select>  
+					
+		<div >
+		<button type="submit" class ="btn btn-primary btn-sm mb-3" >Search</button>
+		
+		</div>
+		</div>
+		</form>
+		 </div>
+		 <div>
+		
+		</div>  
+		 <div
+		  class="alert alert-danger" th:if="${error}" th:text="${error}"  >
+		</div>
+		 <div
+		  class="alert alert-primary" th:if="${sucess}" th:text="${sucess}"  >
+		</div>
+		
+		<div class="buttondata">
+		<a th:href="@{/api/employee}" class ="btn btn-primary btn-sm mb-3" >Add Employee</a>
+		</div>
+		<div class="home" >
+			<a th:href="@{/api/employees}" class ="btn btn-primary btn-sm mb-3" >Home</a>
+			</div>
+		<table class ="table table-striped table-bordered" border="1">
+			<thead class ="table-dark">
+				<tr>
+					<th>Employee</th>
+					<th>Contact</th>
+					<th>Level&Post</th>
+					<th>Action</th>
+				</tr>
+
+			</thead>
+			
+		</table>
+	</div>
+
+
+</body>
+</html>
